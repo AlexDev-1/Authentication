@@ -14,18 +14,18 @@ def connect_db(app):
 class User(db.Model):
     __tablename__ = 'users'
 
-    username = db.Column(db.Text(20)
+    username = db.Column(db.String(20)
                          , primary_key = True
                          , unique = True
                          , nullable = False)
     password = db.Column(db.Text
                          , nullable = False)
-    email = db.Column(db.Text(50)
+    email = db.Column(db.String(50)
                       , nullable = False
                       , unique = True)
-    first_name = db.Column(db.Text(30)
+    first_name = db.Column(db.String(30)
                            , nullable = False)
-    last_name = db.Column(db.Text(30)
+    last_name = db.Column(db.String(30)
                           , nullable = False)
     
     @classmethod

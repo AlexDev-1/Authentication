@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Show User Details
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    
+    <div class="col-sm-10 col-12">
+
+        <h2 class="mt-4">User</h2>
+
+        <ul>
+            <li>Username: {{ user.username }}</li>
+            <li>Email: {{ user.email }}</li>
+            <li>First Name: {{ user.first_name }}</li>
+            <li>Last Name: {{ user.last_name }}</li>
+        </ul>
+
+    </div>
+
+</div>
+{% endblock %}

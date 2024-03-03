@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, session, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, User
 from forms import UserForm, LoginForm
+from werkzeug.exceptions import Unauthorized
 
 import os
 
@@ -76,7 +77,16 @@ def logout_user():
     session.pop("username")
     return redirect("/login")
 
+@app.route('/users/<username>')
+def show_user(username):
 
+    if 'username' not in session or username != session['username']:
+        raise Unauthorized()
+    
+    user = User.query.get_or_404(username)
+    print(user.email)
+
+    return render_template("users/show.html", user=user)
     
 
 
